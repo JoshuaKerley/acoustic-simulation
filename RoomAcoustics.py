@@ -46,6 +46,12 @@ room.add_source([speakerX, speakerY, speakerZ], signal=signal)
 # add microphone
 room.add_microphone_array(pra.MicrophoneArray(np.array([[micX, micY, micZ]]).T, room.fs))
 
+# plot room impulse response
+room.image_source_model(use_libroom=True)
+room.plot_rir()
+fig = plt.gcf()
+fig.set_size_inches(10, 5)
+
 # visualize room
 fig, ax = room.plot()
 ax.set_xlim([-1, rWidth + 1])
